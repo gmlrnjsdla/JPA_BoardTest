@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -27,5 +28,9 @@ public class QuestionBoard {
 	
 	@Column(length = 1000)   //255자 제한해제
 	private String content;
+	
+	@CreationTimestamp
+	@Column(updatable = false)
+	private LocalDateTime createTime;
 	
 }
