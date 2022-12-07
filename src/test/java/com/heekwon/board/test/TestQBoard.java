@@ -1,6 +1,7 @@
 package com.heekwon.board.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
+import com.heekwon.board.Entity.AnswerBoard;
 import com.heekwon.board.Entity.QuestionBoard;
+import com.heekwon.board.repository.ABoardRepository;
 import com.heekwon.board.repository.QBoardRepository;
 
 @SpringBootTest
@@ -21,16 +24,19 @@ public class TestQBoard {
 	@Autowired
 	QBoardRepository qBoardRepository;
 	
-//	@Test
-//	@DisplayName("저장 테스트")
-//	public void createQuestion() {
-//		QuestionBoard qBoard = new QuestionBoard();
-//		
-//		qBoard.setSubject("안녕");
-//		qBoard.setContent("안녕");
-//		
-//		qBoardRepository.save(qBoard);
-//	}
+	@Autowired
+	ABoardRepository aBoardRepository;
+	
+	@Test
+	@DisplayName("저장 테스트")
+	public void createQuestion() {
+		QuestionBoard qBoard = new QuestionBoard();
+		
+		qBoard.setSubject("안녕");
+		qBoard.setContent("안녕");
+		
+		qBoardRepository.save(qBoard);
+	}
 	
 //	@Test
 //	@DisplayName("조회 테스트")
@@ -122,5 +128,6 @@ public class TestQBoard {
 		assertEquals(6, qAll.size());
 		
 	}
+	
 	
 }
